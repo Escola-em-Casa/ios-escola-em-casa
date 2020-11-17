@@ -34,7 +34,7 @@ Caso queira simplesmente testar o aplicativo, você precisa gerar um APK e insta
 
 - Pronto, estará com o aplicativo rodando em seu dispositivo.
 
-## Como bloquear uma URL nova ?
+## Como desbloquear um domínio para acesso ?
 
 Vá até o arquivo `GCWebViewController.swift`, linha 25:
 
