@@ -40,7 +40,9 @@ Vá até o arquivo `GCWebViewController.swift`, linha 25:
 
 ![Linha 25](https://github.com/Escola-em-Casa/resources-escola-em-casa/blob/master/exemple.png)
 
+
 Adicione dentro do if: `!host.contains("domain.com") &&`
+
 No qual domain.com é domínio no qual você quer desbloquear.
 
 ## Tecnologias do projeto
