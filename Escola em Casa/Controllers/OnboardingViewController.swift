@@ -40,6 +40,7 @@ class OnboardingViewController: UIViewController {
 
     private func setupView() {
         view.addSubview(onboardingView)
+        setupConstraints()
     }
 
     private func setupConstraints() {
@@ -49,25 +50,7 @@ class OnboardingViewController: UIViewController {
     }
 }
 
-extension OnboardingViewController: PaperOnboardingDelegate {
-
-    func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) { }
-
-    func onboardingWillTransitonToIndex(_ index: Int) { }
-
-    func onboardingPageItemColor(at index: Int) -> UIColor {
-        switch index {
-        case 1:
-            return .red
-        case 2:
-            return .blue
-        case 3:
-            return .black
-        default:
-            return .green
-        }
-    }
-}
+extension OnboardingViewController: PaperOnboardingDelegate { }
 
 extension OnboardingViewController: PaperOnboardingDataSource {
 
@@ -78,14 +61,14 @@ extension OnboardingViewController: PaperOnboardingDataSource {
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         return OnboardingItemInfo(
             informationImage: UIImage(),
-            title: "",
-            description: "",
+            title: "Teste 1",
+            description: "Some random description",
             pageIcon: UIImage(),
-            color: .black,
+            color: .darkGray,
             titleColor: .green,
             descriptionColor: .red,
             titleFont: UIFont(descriptor: UIFontDescriptor(), size: 20),
-            descriptionFont: UIFont(descriptor: UIFontDescriptor(), size: 12)
+            descriptionFont: UIFont(descriptor: UIFontDescriptor(), size: 16)
         )
     }
 }

@@ -4,7 +4,7 @@ import WebKit
 class SiteWebViewControllerViewController: UIViewController, WKNavigationDelegate {
 
     // MARK: - Properties
-    
+
     var webView: WKWebView!
 
     lazy var url: URL = {
@@ -31,16 +31,11 @@ class SiteWebViewControllerViewController: UIViewController, WKNavigationDelegat
 
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
         toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
     }
 
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
         view = webView
-    }
-
-    private func setupLayout() {
-
     }
 }

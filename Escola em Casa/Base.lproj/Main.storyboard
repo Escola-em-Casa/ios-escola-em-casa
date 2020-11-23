@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w9o-Fy-OdW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABN-pa-v5L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188.40579710144928" y="-708.48214285714278"/>
+            <point key="canvasLocation" x="-248" y="-755"/>
         </scene>
         <!--Google Sala de Aula-->
         <scene sceneID="hNz-n2-bh7">
@@ -97,11 +97,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnT-tW-3GE">
-                                <rect key="frame" x="67" y="504.5" width="280" height="33"/>
+                                <rect key="frame" x="67" y="511" width="280" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Como acessar o Google Sala de Aula"/>
                                 <connections>
-                                    <segue destination="dqC-6h-ZPu" kind="show" id="FcN-4n-bIU"/>
+                                    <action selector="howAccessClassRoomPressed:" destination="jsG-CA-Bs8" eventType="touchUpInside" id="THt-dm-DJB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Links Importantes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITc-nr-ldR">
@@ -111,11 +111,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AB-3z-OWx">
-                                <rect key="frame" x="124" y="578.5" width="166" height="33"/>
+                                <rect key="frame" x="124" y="585" width="166" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Escola em Casa (Site)"/>
                                 <connections>
-                                    <segue destination="flp-PG-dgB" kind="show" id="0aE-C4-w3M"/>
+                                    <action selector="acessWebSitePressed:" destination="jsG-CA-Bs8" eventType="touchUpInside" id="4Fa-gr-F2Z"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Problemas para acessar o Google Sala de Aula?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTv-UB-4vx">
@@ -158,9 +158,9 @@
         <!--Como acessar o Google sala de aula-->
         <scene sceneID="67l-wq-DyG">
             <objects>
-                <viewController title="Como acessar o Google sala de aula" id="dqC-6h-ZPu" customClass="HowAccessClassRoomViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HowAccessClassRoomView" title="Como acessar o Google sala de aula" id="dqC-6h-ZPu" customClass="HowAccessClassRoomViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kX1-pb-JO0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="KLo-8r-d0U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -169,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziC-IN-0qG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="1301"/>
+            <point key="canvasLocation" x="164" y="1557"/>
         </scene>
         <!--Wikipedia-->
         <scene sceneID="wg7-f3-ORb">
@@ -218,14 +218,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-214" y="-8"/>
+            <point key="canvasLocation" x="-214" y="-23"/>
         </scene>
         <!--Site Web View Controller View Controller-->
         <scene sceneID="rcz-vh-4uX">
             <objects>
-                <viewController id="flp-PG-dgB" customClass="SiteWebViewControllerViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SiteWebView" id="flp-PG-dgB" customClass="SiteWebViewControllerViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1eV-9k-wbp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PhQ-G6-F3i"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -234,12 +234,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bpu-yN-csd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-326" y="1862"/>
+            <point key="canvasLocation" x="-732" y="1557"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="5NA-Ia-LEe">
             <objects>
-                <viewController id="w9o-Fy-OdW" customClass="LoadingViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadingView" id="w9o-Fy-OdW" customClass="LoadingViewController" customModule="Escola_em_Casa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TWc-Ak-flB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-protocol Viewable {
-    var key: String { get }
-    func getViewController() -> UIViewController
-}
+//
+//protocol Viewable {
+//    var key: String { get }
+//    func getViewController() -> UIViewController
+//}

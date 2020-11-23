@@ -12,10 +12,6 @@ class HowAccessClassRoomViewController: UIViewController {
 
         let url = URL(string: "https://escolaemcasa.se.df.gov.br/index.php/como-acessar/")!
         webView.load(URLRequest(url: url))
-
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
     }
 
     override func loadView() {

@@ -17,7 +17,7 @@ class FAQTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    var delegate: FAQTableViewCellDelegate?
+    weak var delegate: FAQTableViewCellDelegate?
 
     var isExpanded: Bool = false {
         didSet {

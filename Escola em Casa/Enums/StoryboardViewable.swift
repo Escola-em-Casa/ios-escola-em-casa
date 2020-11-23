@@ -13,6 +13,10 @@ enum StoryboardViewable: String, Viewable {
     case googleClassroom = "GC"
     case wikipedia = ""
 
+    var storyboard: String {
+        return "Main"
+    }
+
     var key: String {
         return self.rawValue
     }

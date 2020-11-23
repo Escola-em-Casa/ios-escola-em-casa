@@ -1,13 +1,39 @@
 import UIKit
 import WebKit
 
-class WikiWebViewController: UIViewController {
+class WikiWebViewController: UIViewController, WKNavigationDelegate {
 
     // MARK: - Properties
 
     @IBOutlet weak var activity: UIActivityIndicatorView!
 
     var webView: WKWebView!
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activity.stopAnimating()
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activity.stopAnimating()
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+            print("Lançamento de nova aba")
+        }
+
+        if let host = navigationAction.request.url?.host {
+            if host.contains("wikipedia.org") {
+                decisionHandler(.allow)
+                return
+            }
+        }
+
+        print("Request Bloqueada")
+
+        decisionHandler(.cancel)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,15 +43,10 @@ class WikiWebViewController: UIViewController {
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
 
-        // add activity
         self.webView.addSubview(self.activity)
         self.activity.startAnimating()
         self.webView.navigationDelegate = self
         self.activity.hidesWhenStopped = true
-
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
     }
 
     override func loadView() {
@@ -50,33 +71,5 @@ class WikiWebViewController: UIViewController {
         let jsScriptRemoveDonationButton = WKUserScript(source: jsRemoveDonationButton, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
 
         webView.configuration.userContentController.addUserScript(jsScriptRemoveDonationButton)
-    }
-}
-
-extension WikiWebViewController: WKNavigationDelegate {
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activity.stopAnimating()
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activity.stopAnimating()
-    }
-
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.targetFrame == nil {
-            webView.load(navigationAction.request)
-            print("Lançamento de nova aba")
-        }
-        if let host = navigationAction.request.url?.host {
-            if host.contains("wikipedia.org") {
-                decisionHandler(.allow)
-                return
-            }
-        }
-
-        print("Request Bloqueada")
-
-        decisionHandler(.cancel)
     }
 }
