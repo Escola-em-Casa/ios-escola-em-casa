@@ -16,17 +16,15 @@ class WikiWebViewController: UIViewController, WKNavigationDelegate{
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.targetFrame == nil {
             webView.load(navigationAction.request)
-            print("Lançamento de nova aba")
         }
+        
         if let host = navigationAction.request.url?.host {
             if host.contains("wikipedia.org") {
                 decisionHandler(.allow)
                 return
             }
         }
-        
-        print("Request Bloqueada")
-        
+                
         decisionHandler(.cancel)
     }
     
