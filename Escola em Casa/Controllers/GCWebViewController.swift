@@ -50,7 +50,6 @@ class GCWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
             }
         }
         
-        print("Request Bloqueada")
         
         decisionHandler(.cancel)
     }
