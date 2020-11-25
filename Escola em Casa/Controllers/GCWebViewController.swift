@@ -56,8 +56,10 @@ class GCWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let classRoom = "https://classroom.google.com/a/estudante.se.df.gov.br"
         
-        let url = URL(string: "https://classroom.google.com/a/estudante.se.df.gov.br")!
+        let url = URL(string: classRoom)!
         
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
