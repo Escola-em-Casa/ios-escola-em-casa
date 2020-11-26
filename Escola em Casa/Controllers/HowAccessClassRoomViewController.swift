@@ -9,9 +9,7 @@ class HowAccessClassRoomViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL(string: "https://escolaemcasa.se.df.gov.br/index.php/como-acessar/")!
-        webView.load(URLRequest(url: url))
+        loadUrl()
     }
 
     override func loadView() {
@@ -20,21 +18,30 @@ class HowAccessClassRoomViewController: UIViewController {
         view = webView
     }
 
-    private func setupLayout() {
-
+    private func loadUrl() {
+        let request = URLRequest(url: WebViewURL.howAcess.url)
+        webView.load(request)
     }
 }
 
 extension HowAccessClassRoomViewController: WKNavigationDelegate {
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let host = navigationAction.request.url?.host {
-            if host.contains("escolaemcasa.se.df.gov.br") {
-                decisionHandler(.allow)
-                return
-            }
-        }
 
-        decisionHandler(.cancel)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if isPrivacyAvailableForDomain(navigationAction.request.url?.host) {
+            decisionHandler(.allow)
+            return
+        } else {
+            decisionHandler(.cancel)
+        }
+    }
+
+    private func isPrivacyAvailableForDomain(_ host: String?) -> Bool {
+        let filterKey = "escolaemcasa.se.df.gov.br"
+        if let host = host, host.contains(filterKey) {
+            return true
+        } else {
+            return false
+        }
     }
 }

@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 import SmiSdkVpn
 
+protocol NetworkManagerDelegate: class {
+    func didReceiveResult(_ result: SmiResult)
+}
+
 class NetworkManager {
+
+    weak var delegate: NetworkManagerDelegate?
 
     init() {
         NotificationCenter.default.addObserver(
@@ -21,33 +27,10 @@ class NetworkManager {
         )
     }
 
-    func verifyConnection() {
-        let connectionState = SmiSdk.getVpnSdState()
-
-        if connectionState == SdState.SD_WIFI {
-            // Loader.stop()
-        } else if connectionState == SdState.SD_AVAILABLE {
-            // Loader.stop()
-        }
-    }
-
-    // MARK: - Observers
+    // MARK: - Observer
 
     @objc func observeConnection(notification: NSNotification) {
         guard let result = notification.object as? SmiResult else { return }
-
-        switch result.sdState {
-        case SdState.SD_AVAILABLE:
-            // TODO: show a banner or message to user, indicating that the data
-            break
-        case SdState.SD_NOT_AVAILABLE:
-            // TODO: show a banner or message to user, indicating that the data
-            break
-        case SdState.SD_WIFI:
-            // TODO: show a banner or message to user, indicating that the data
-            break
-        default:
-            break
-        }
+        delegate?.didReceiveResult(result)
     }
 }
