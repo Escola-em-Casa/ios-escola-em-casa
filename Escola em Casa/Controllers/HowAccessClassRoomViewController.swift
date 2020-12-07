@@ -1,38 +1,62 @@
 import UIKit
 import WebKit
 
-class HowAccessClassRoomViewController: UIViewController, WKNavigationDelegate {
-    
-    var webView: WKWebView!
+class HowAccessClassRoomViewController: BaseWebViewController, BaseViewControllerDataSource {
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let host = navigationAction.request.url?.host {
-            if host.contains("escolaemcasa.se.df.gov.br") {
-                decisionHandler(.allow)
-                return
-            }
-        }
+    required override init(domain: String, url: URL) {
+        super.init(domain: domain, url: url)
+    }
 
-        decisionHandler(.cancel)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL(string: "https://escolaemcasa.se.df.gov.br/index.php/como-acessar/")!
-        webView.load(URLRequest(url: url))
-          
-
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
     }
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
-
-
 }
+
+//    // MARK: - Properties
+
+//
+//    var webView: WKWebView!
+//    var domain: String = ""
+//    var url: URL!
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        loadUrl()
+//    }
+//
+//    override func loadView() {
+//        webView = WKWebView()
+//        webView.navigationDelegate = self
+//        view = webView
+//    }
+//
+//    private func loadUrl() {
+//        let request = URLRequest(url: WebViewURL.howAcess.url)
+//        webView.load(request)
+//    }
+//}
+
+//extension HowAccessClassRoomViewController: WKNavigationDelegate {
+//
+//    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+//        if isPrivacyAvailableForDomain(navigationAction.request.url?.host) {
+//            decisionHandler(.allow)
+//            return
+//        } else {
+//            decisionHandler(.cancel)
+//        }
+//    }
+//
+//    private func isPrivacyAvailableForDomain(_ host: String?) -> Bool {
+//        let filterKey = "escolaemcasa.se.df.gov.br"
+//        if let host = host, host.contains(filterKey) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//}
