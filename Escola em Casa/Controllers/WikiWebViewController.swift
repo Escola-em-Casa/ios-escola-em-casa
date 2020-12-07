@@ -1,77 +1,81 @@
 import UIKit
 import WebKit
 
-class WikiWebViewController: UIViewController, WKNavigationDelegate{
-    @IBOutlet weak var activity: UIActivityIndicatorView!
+class WikiWebViewController: UIViewController {
+
+    // MARK: - Properties
+
     var webView: WKWebView!
-    
+
+    // MARK: - Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        load()
+        setupActivity()
+    }
+
+    override func loadView() {
+        super.loadView()
+        setupLayout()
+    }
+
+    private func load() {
+        let request = URLRequest(url: WebViewURL.wikipedia.url)
+        webView.load(request)
+    }
+
+    private func removeWebViewAdds(_ webview: WKWebView) -> WKWebView {
+        guard let removeDonationButton = InjectableStrings.wikipediaInjection.text else { return  webview }
+
+        let jsScriptRemoveDonationButton = WKUserScript(source: removeDonationButton, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        webView.configuration.userContentController.addUserScript(jsScriptRemoveDonationButton)
+        return webview
+    }
+
+    private func setupLayout() {
+        webView = createWebView()
+        webView = removeWebViewAdds(webView)
+        view  = webView
+
+    }
+
+    private func setupActivity() {
+        Loader.start(loaderColor: AppColors.primaryColor)
+    }
+
+    private func createWebView() -> WKWebView {
+        let webView = WKWebView()
+        webView.navigationDelegate = self
+        webView.allowsBackForwardNavigationGestures = true
+        webView.navigationDelegate = self
+
+        return webView
+    }
+}
+
+extension WikiWebViewController: WKNavigationDelegate {
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activity.stopAnimating()
+        Loader.stop()
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activity.stopAnimating()
+        Loader.stop()
     }
-    
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.targetFrame == nil {
             webView.load(navigationAction.request)
-            print("Lançamento de nova aba")
         }
+
         if let host = navigationAction.request.url?.host {
             if host.contains("wikipedia.org") {
                 decisionHandler(.allow)
                 return
             }
         }
-        
-        print("Request Bloqueada")
-        
+
         decisionHandler(.cancel)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let url = URL(string: "https://pt.wikipedia.org/")!
-        
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-        
-        // add activity
-        self.webView.addSubview(self.activity)
-        self.activity.startAnimating()
-        self.webView.navigationDelegate = self
-        self.activity.hidesWhenStopped = true
-        
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        
-        let screenSize: CGRect = UIScreen.main.bounds
-        let subView = UIView(frame: CGRect(x: 0, y: statusBarHeight, width: screenSize.width, height: screenSize.height-statusBarHeight))
-        
-        view.addSubview(subView)
-        
-        webView = WKWebView(frame : subView.frame)
-        
-        view.addSubview(webView)
-        webView.navigationDelegate = self
-        
-        let jsRemoveDonationButton = "javascript:(function f() {" +
-            "document.getElementById('p-donation').style.display='none'; " +
-            "})()"
-        
-        let jsScriptRemoveDonationButton = WKUserScript(source: jsRemoveDonationButton, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        
-        webView.configuration.userContentController.addUserScript(jsScriptRemoveDonationButton)
-    }
-    
-    
 }

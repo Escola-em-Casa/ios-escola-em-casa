@@ -1,38 +1,55 @@
-import UIKit
 import WebKit
 
 class SiteWebViewControllerViewController: UIViewController, WKNavigationDelegate {
-    
-    var webView: WKWebView!
+
+    // MARK: - Properties
+
+    private lazy var webView: WKWebView = {
+        let view = WKWebView()
+        view.navigationDelegate = self
+
+        return view
+    }()
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let host = navigationAction.request.url?.host {
-            if host.contains("escolaemcasa.se.df.gov.br") {
-                decisionHandler(.allow)
-                return
-            }
+        if isPrivacyAvailableForDomain(navigationAction.request.url?.host) {
+            decisionHandler(.allow)
+            return
+        } else {
+            decisionHandler(.cancel)
         }
-
-        decisionHandler(.cancel)
     }
+
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL(string: "https://escolaemcasa.se.df.gov.br/")!
-        webView.load(URLRequest(url: url))
-          
-
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        toolbarItems = [refresh]
-        navigationController?.isToolbarHidden = false
+        requestWebView()
     }
-    
+
     override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
+        setupView()
+    }
+
+    // MARK: - Setup
+
+    private func setupView() {
         view = webView
     }
 
+    // MARK: - Private Methods
 
+    private func requestWebView() {
+        let request = URLRequest(url: WebViewURL.main.url)
+        webView.load(request)
+    }
+
+    private func isPrivacyAvailableForDomain(_ host: String?) -> Bool {
+        let filterKey = "escolaemcasa.se.df.gov.br"
+        if let host = host, host.contains(filterKey) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
