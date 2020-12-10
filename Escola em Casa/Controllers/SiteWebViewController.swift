@@ -19,7 +19,8 @@ class SiteWebViewControllerViewController: UIViewController, WKNavigationDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = URL(string: "https://escolaemcasa.se.df.gov.br/")!
+        let escolaEmCasaLink = "https://escolaemcasa.se.df.gov.br/"
+        let url = URL(string: escolaEmCasaLink)!
         webView.load(URLRequest(url: url))
           
 
