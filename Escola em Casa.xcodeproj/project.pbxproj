@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B015A9E02531001000794615 /* SmiSdkVpn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B015A9DE2531000A00794615 /* SmiSdkVpn.framework */; };
-		B015A9E12531001000794615 /* SmiSdkVpn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B015A9DE2531000A00794615 /* SmiSdkVpn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B021297B25C35D6B0060F247 /* SmiSdkVpn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B021297925C35D4F0060F247 /* SmiSdkVpn.framework */; };
+		B021297C25C35D6B0060F247 /* SmiSdkVpn.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B021297925C35D4F0060F247 /* SmiSdkVpn.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B058200124E3249A00ADB655 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B058200024E3249A00ADB655 /* CoreTelephony.framework */; };
 		B058200324E324A500ADB655 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B058200224E324A500ADB655 /* NetworkExtension.framework */; };
 		B058200524E324AF00ADB655 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B058200424E324AF00ADB655 /* SystemConfiguration.framework */; };
@@ -26,13 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B0581FFE24E3248700ADB655 /* Embed Frameworks */ = {
+		B021297825C35BE60060F247 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B015A9E12531001000794615 /* SmiSdkVpn.framework in Embed Frameworks */,
+				B021297C25C35D6B0060F247 /* SmiSdkVpn.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B015A9DE2531000A00794615 /* SmiSdkVpn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SmiSdkVpn.framework; sourceTree = "<group>"; };
+		B021297925C35D4F0060F247 /* SmiSdkVpn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SmiSdkVpn.framework; sourceTree = "<group>"; };
 		B058200024E3249A00ADB655 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B058200224E324A500ADB655 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		B058200424E324AF00ADB655 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -67,7 +67,7 @@
 			files = (
 				B058200124E3249A00ADB655 /* CoreTelephony.framework in Frameworks */,
 				B058200324E324A500ADB655 /* NetworkExtension.framework in Frameworks */,
-				B015A9E02531001000794615 /* SmiSdkVpn.framework in Frameworks */,
+				B021297B25C35D6B0060F247 /* SmiSdkVpn.framework in Frameworks */,
 				B058200524E324AF00ADB655 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,7 @@
 		B093144E24BBEC9300F42961 /* Escola em Casa */ = {
 			isa = PBXGroup;
 			children = (
-				B015A9DE2531000A00794615 /* SmiSdkVpn.framework */,
+				B021297925C35D4F0060F247 /* SmiSdkVpn.framework */,
 				B058200624E324EB00ADB655 /* Escola em Casa.entitlements */,
 				B04429C624C8062100EF3925 /* Controllers */,
 				B093148924BBFEBF00F42961 /* SceneDelegate.swift */,
@@ -141,7 +141,7 @@
 				B093144824BBEC9300F42961 /* Sources */,
 				B093144924BBEC9300F42961 /* Frameworks */,
 				B093144A24BBEC9300F42961 /* Resources */,
-				B0581FFE24E3248700ADB655 /* Embed Frameworks */,
+				B021297825C35BE60060F247 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,6 +357,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Escola em Casa/Escola em Casa.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TC7W5F4U25;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
@@ -365,6 +366,9 @@
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/smisdkvpn-ios_3.7.8",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
@@ -385,6 +389,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -395,6 +400,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Escola em Casa/Escola em Casa.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TC7W5F4U25;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
@@ -403,6 +409,9 @@
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/smisdkvpn-ios_3.7.8",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
+					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
 					"$(PROJECT_DIR)/Escola\\ em\\ Casa",
@@ -423,6 +432,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
